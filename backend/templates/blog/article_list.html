@@ -1,0 +1,16 @@
+{% extends 'blog/base.html' %}
+{% block mail %}
+
+      {% for article in object_list %}
+    <article>
+        <h2>{{article.title}}</h2>
+        <div>{{article.author}}</div>
+        <p>{{article.publish}}</p>
+        <div>{{article.content}}</div>
+
+        <hr>
+    </article>
+    {% empty %}
+    {% endfor %}
+
+{% endblock %}

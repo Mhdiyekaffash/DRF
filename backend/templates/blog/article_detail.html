@@ -1,0 +1,13 @@
+{% extends 'blog/base.html' %}
+{% block mail %}
+
+    <article>
+        <h2>{{object.title}}</h2>
+        <div>{{object.author}}</div>
+        <p>{{object.publish}}</p>
+        <div>{{object.content}}</div>
+
+        <hr>
+    </article>
+
+{% endblock %}
