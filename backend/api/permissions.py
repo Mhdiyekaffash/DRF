@@ -35,7 +35,7 @@ class IsSuperUserOrStaffOrReadOnly(BasePermission):
             request.method in SAFE_METHODS and
             request.user and
             request.user.is_staff or
-            # get access to superuser readonly
+            # get access to superuser full
             request.user and
             request.user.is_superuser
         )

@@ -13,12 +13,25 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+# import simplejwt as simplejwt
 from django.contrib import admin
 from django.urls import path, include
+# from rest_framework.authtoken.views import obtain_auth_token
+# from api.views import RevokeToken
+from rest_framework_simplejwt import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api-auth/', include('rest_framework.urls')),
+    # path('api-auth/', include('rest_framework.urls')),
     path('', include('blog.urls')),
-    path('api/', include('api.urls'))
+    path('api/', include('api.urls')),
+    # path('api/token-auth/', obtain_auth_token),
+    # path('api/revoke/', RevokeToken.as_view()),
+    # path('api/rest-auth/', include('dj_rest_auth.urls')),
+    # path('api/dj-rest-auth/registration/', include('dj_rest_auth.registration.urls'))
+    path('api/token/', views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', views.TokenRefreshView.as_view(), name='token_refresh'),
 ]
+#admin1
+#12345

@@ -35,9 +35,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    # 'allauth',
+    # 'allauth.account',
+    # 'allauth.socialaccount',
+    # 'dj_rest_auth.registration',
     'rest_framework',
+    # 'rest_framework.authtoken',
     'blog.apps.BlogConfig',
     'api.apps.ApiConfig',
+    # 'dj_rest_auth'
 ]
 
 MIDDLEWARE = [
@@ -123,4 +130,18 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK = {
 
     'DEFAULT_PERMISSION_CLASSES': ('api.permissions.IsStaffOrReadOnly',),
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        # 'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.TokenAuthentication',
+        # 'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ]
 }
+
+SITE_ID = 1
+REST_USE_JWT = True
+
+JWT_AUTH_COOKIE = 'access'
+JWT_AUTH_REFRESH_COOKIE = 'refresh'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

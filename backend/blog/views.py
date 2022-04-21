@@ -16,4 +16,3 @@ class ArticleDetail(DetailView):
             Article.objects.filter(status=True),
             pk=self.kwargs.get('pk')
         )
-
